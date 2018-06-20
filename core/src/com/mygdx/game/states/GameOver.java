@@ -14,6 +14,7 @@ public class GameOver extends State {
     private int score;
     private int bestScore;
 
+    /*конструктор класса*/
     public GameOver(GameStateManager gsm, int score, int bestScore) {
         super(gsm);
         this.score = score;
@@ -24,6 +25,7 @@ public class GameOver extends State {
         gameOver = new Texture("gameover.png");
     }
 
+    /*метод обработки нажатия на экран*/
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched()){
@@ -31,11 +33,13 @@ public class GameOver extends State {
         }
     }
 
+    /*метод обновления*/
     @Override
     public void update(float dt) {
         handleInput();
     }
 
+    /*метод отрисовки*/
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(camera.combined);
@@ -47,6 +51,7 @@ public class GameOver extends State {
         sb.end();
     }
 
+    /*метод освобождения*/
     @Override
     public void dispose() {
         backGround.dispose();

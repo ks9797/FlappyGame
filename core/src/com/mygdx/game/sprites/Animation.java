@@ -10,6 +10,7 @@ public class Animation {
     private int frameCount;
     private int frame;
 
+    /*конструктор класса*/
     public Animation(TextureRegion region, int frameCount, float cycleTime){
         frames = new Array<TextureRegion>();
         int frameWidth = region.getRegionWidth() / frameCount;
@@ -21,6 +22,7 @@ public class Animation {
         frame = 0;
     }
 
+    /*обновление кадра анимации птицы*/
     public void update(float dt){
         currentFrameTime += dt;
         if (currentFrameTime > maxFrameTime){
@@ -31,6 +33,7 @@ public class Animation {
             frame = 0;
     }
 
+    /*геттер для кадра*/
     public  TextureRegion getFrame(){
         return frames.get(frame);
     }

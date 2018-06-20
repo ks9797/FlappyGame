@@ -9,14 +9,15 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Bird {
     private static final int MOVEMENT = 100;
-    public static final int GRAVITY = -15;
-    private Vector3 position;
-    private Vector3 velosity;
+    public static final int GRAVITY = -15;// сила тяжести
+    private Vector3 position;// позиция
+    private Vector3 velosity;// скорость
     private Rectangle bounds;
     private Sound flap;
     private Animation birdAnimation;
     private Texture texture;
 
+    /*конструктор класса*/
     public Bird(int x, int y){
         position = new Vector3(x, y, 0);
         velosity = new Vector3(0, 0, 0);
@@ -26,14 +27,17 @@ public class Bird {
         flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
     }
 
+    /*геттер позиции птицы*/
     public Vector3 getPosition() {
         return position;
     }
 
+    /*геттер птицы*/
     public TextureRegion getBird() {
         return birdAnimation.getFrame();
     }
 
+    /*метод обновления птицы*/
     public void update(float dt){
         birdAnimation.update(dt);
         if (position.y > 0)
@@ -46,15 +50,18 @@ public class Bird {
         bounds.setPosition(position.x, position.y);
     }
 
+    /*метод прыжка(полета) птицы*/
     public void jump(){
         velosity.y = 250;
         flap.play(0.1f);
     }
 
+    /*геттер для прямоугольника птицы*/
     public Rectangle getBounds(){
         return bounds;
     }
 
+    /*метод освобождения*/
     public void dispose() {
         flap.dispose();
         texture.dispose();

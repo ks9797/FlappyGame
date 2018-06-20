@@ -11,6 +11,7 @@ public class MenuState extends State {
     private Texture playBtn;
     private int bScore;
 
+    /*конструктор класса*/
     public MenuState(GameStateManager gsm, int bestScore) {
         super(gsm);
         this.bScore = bestScore;
@@ -19,6 +20,7 @@ public class MenuState extends State {
         playBtn = new Texture("playbtn.png");
     }
 
+    /*обработка, нажатия на экран*/
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched()){
@@ -26,11 +28,13 @@ public class MenuState extends State {
         }
     }
 
+    /*метод обновления*/
     @Override
     public void update(float dt) {
         handleInput();
     }
 
+    /*метод отрисовки*/
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(camera.combined);
@@ -40,6 +44,7 @@ public class MenuState extends State {
         sb.end();
     }
 
+    /*метод освобождения*/
     @Override
     public void dispose() {
         backGround.dispose();

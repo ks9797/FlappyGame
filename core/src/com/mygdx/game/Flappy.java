@@ -21,7 +21,7 @@ public class Flappy extends ApplicationAdapter {
 	public int bestScore = 0;
 
 	private GameStateManager gsm;
-	
+	/* метод инициализации переменных, вызова меню игры и включения музыки*/
 	@Override
 	public void create () {
 		font = new BitmapFont();
@@ -34,14 +34,14 @@ public class Flappy extends ApplicationAdapter {
 		music.setVolume(0.5f);
 		music.play();
 	}
-
+	/*метод для очистки экрана и вызова методов класса GameStateManager*/
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
 	}
-	
+	/*освобождение памяти от используемых ресурсов*/
 	@Override
 	public void dispose () {
 		batch.dispose();

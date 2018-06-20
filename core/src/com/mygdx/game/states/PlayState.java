@@ -12,9 +12,9 @@ import com.mygdx.game.sprites.Tube;
 
 public class PlayState extends State {
 
-    public static int TUBE_SPACING = 125;
-    public static int TUBE_COUNT = 4;
-    private static final int GROUND_Y_OFFSET = -30;
+    public static int TUBE_SPACING = 125; //расстояние между трубами
+    public static int TUBE_COUNT = 4;//количество пар труб
+    private static final int GROUND_Y_OFFSET = -30;//смещение земли по y
     private int score = 0;
     private int bScore;
     private BitmapFont font;
@@ -26,6 +26,7 @@ public class PlayState extends State {
 
     private Array <Tube> tubes;
 
+    /*конструктор класса*/
     public PlayState(GameStateManager gsm, int bestScore) {
         super(gsm);
         bird = new Bird(50, 300);
@@ -44,16 +45,19 @@ public class PlayState extends State {
         }
     }
 
+    /*геттер для счетчика*/
     public int getScore() {
         return score;
     }
 
+    /*метод для обработки нажатия пользователем на экран*/
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched())
             bird.jump();
     }
 
+    /*метод для обновления элементов игры(птичка, зебля, трубы), подсчет очков*/
     @Override
     public void update(float dt) {
         handleInput();
@@ -74,10 +78,10 @@ public class PlayState extends State {
                 gsm.set(new GameOver(gsm, score, bScore));
             }
         }
-
         camera.update();
     }
 
+    /*отрисовка элементов игры*/
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(camera.combined);
@@ -94,6 +98,7 @@ public class PlayState extends State {
         sb.end();
     }
 
+    /*метод обновления земли*/
     private void updateGround(){
         if (camera.position.x - (camera.viewportWidth / 2) > groundPos1.x + ground.getWidth())
             groundPos1.add(ground.getWidth() * 2, 0);
@@ -101,6 +106,7 @@ public class PlayState extends State {
             groundPos2.add(ground.getWidth() * 2, 0);
     }
 
+    /*метод для освобождения памяти от ресурсов*/
     @Override
     public void dispose() {
         backGround.dispose();
